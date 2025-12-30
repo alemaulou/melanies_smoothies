@@ -47,8 +47,15 @@ if ingredients_list:
         st.write('The search value for ', fruit_chosen,' is ', search_on, '.')
         
         st.subheader(fruit_chosen + ' Nutrition Information')
-        smoothiefroot_response = requests.get("https://my.smoothiefroot.com/api/fruit/" + str(search_on)) 
-        sf_df = st.dataframe(data=smoothiefroot_response.json(), use_container_width=True)
+        # smoothiefroot_response = requests.get("https://my.smoothiefroot.com/api/fruit/" + str(search_on)) 
+        # sf_df = st.dataframe(data=smoothiefroot_response.json(), use_container_width=True)
+        try:
+            smoothiefroot_response = requests.get("https://my.smoothiefroot.com/api/fruit/" + str(search_on))
+            st.write('Status code:', smoothiefroot_response.status_code)
+            st.write('Response:', smoothiefroot_response.text)
+            sf_df = st.dataframe(data=smoothiefroot_response.json(), use_container_width=True)
+        except Exception as e:
+            st.error(f'Error: {e}')
 
     # SQL Statement to insert into smoothies
     my_insert_stmt = """ insert into smoothies.public.orders(ingredients, name_on_order) 
