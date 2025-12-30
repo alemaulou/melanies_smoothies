@@ -55,9 +55,7 @@ if ingredients_list:
         
         # Make the API call first!
         smoothiefroot_response = requests.get("https://my.smoothiefroot.com/api/fruit/watermelon")
-        
-        st.write(f"Status: {smoothiefroot_response.status_code}")
-        st.json(smoothiefroot_response.json())
+        st.text(smoothiefroot_response.json())
 
      
 
