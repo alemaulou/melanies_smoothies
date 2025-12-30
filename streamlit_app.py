@@ -6,6 +6,7 @@ import requests
 import pandas
 
 # Write directly to the app
+st.title('test')
 st.title(f"Customize Your Smoothie! :cup_with_straw:")
 st.write(
   """Choose the fruits you want in your custom Smoothie!
